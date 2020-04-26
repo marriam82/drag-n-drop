@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .drop{
+        height:200px;
+        background-color: aqua;
+    }
+    .dropOver{
+        background-color: blueviolet;
+    }
+</style>
+<body>
+    <!-- <button type="button" onclick="navigator.geolocation.clearWatch(_watchId)">Stop</button>
+    <script>
+    
+      var _watchId=navigator.geolocation.watchPosition(function(position){
+        console.log(position)
+    },function(err){
+        console.log(err)
+    }) 
+    </script> -->
+    <div class="drop" ondragleave="ondragLeave(event)" ondragenter="ondragEnter(event)" ondragover="ondragOver(event)" ondrop="_onDrop(event)"></div>
+        <p ondragover="ondragOver(event)" draggable="true" id="para" ondragstart="dragStart(event)">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita, mollitia?
+        </p>
+        <script>
+            function dragStart(e){
+                e.dataTransfer.setData("elemId" , e.target.id)
+                console.log(e.dataTransfer.getData('elemId'))
+            }
+            function ondragEnter(e){
+                e.target.classList.add('dropOver')
+            }
+            function ondragLeave(e){
+                e.target.classList.remove('dropOver')
+            }
+            function ondragOver(e){
+                e.preventDefault()
+            }
+            function _onDrop(e){
+                e.preventDefault()
+                let _paraElement = document.getElementById(e.dataTransfer.getData('elemId'))
+                e.target.appendChild(_paraElement)
+            }
+        </script>
+        
+<script>
+    // navigator.geolocation.getCurrentPosition(function (position){
+    //     console.log(position.coor);
+
+    //     },function (err){
+    //         console.log(err)
+    //     },{
+    //         maximumAge: 100,
+        
+
+    // })
+  
+</script>
+
+</body>
+</html>
